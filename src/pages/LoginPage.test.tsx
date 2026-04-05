@@ -48,7 +48,7 @@ describe('LoginPage 測試案例', () => {
     describe('渲染測試 (Render Tests)', () => {
         it('正常渲染登入頁面標題、Email 輸入框、密碼輸入框及登入按鈕', () => {
             renderComponent();
-            
+
             expect(screen.getByRole('heading', { name: '歡迎回來' })).toBeInTheDocument();
             expect(screen.getByLabelText('電子郵件')).toBeInTheDocument();
             expect(screen.getByLabelText('密碼')).toBeInTheDocument();
@@ -83,7 +83,7 @@ describe('LoginPage 測試案例', () => {
             expect(mockLogin).not.toHaveBeenCalled();
         });
 
-        it('密碼缺乏英文或數字時顯示對應的錯誤提示 (密碼必須包含英文字母和數字)', async () => {
+        it('密碼缺乏英文或數字時顯示對應的錯誤提示 (密碼必須包含dfdsfdf英文字母和數字)', async () => {
             renderComponent();
             const emailInput = screen.getByLabelText('電子郵件');
             const passwordInput = screen.getByLabelText('密碼');
@@ -106,7 +106,7 @@ describe('LoginPage 測試案例', () => {
         it('Email 和密碼皆符合要求時，送出後不顯示欄位驗證錯誤', async () => {
             mockLogin.mockResolvedValueOnce(undefined);
             renderComponent();
-            
+
             const emailInput = screen.getByLabelText('電子郵件');
             const passwordInput = screen.getByLabelText('密碼');
             const submitBtn = screen.getByRole('button', { name: '登入' });
@@ -157,7 +157,7 @@ describe('LoginPage 測試案例', () => {
         it('登入失敗時，顯示 API 回傳的錯誤訊息 (使用 error banner 顯示)', async () => {
             const apiError = { response: { data: { message: 'Invalid credentials' } } };
             mockLogin.mockRejectedValueOnce(apiError);
-            
+
             renderComponent();
 
             await userEvent.type(screen.getByLabelText('電子郵件'), 'test@example.com');
