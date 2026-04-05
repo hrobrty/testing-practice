@@ -83,7 +83,7 @@ describe('LoginPage 測試案例', () => {
             expect(mockLogin).not.toHaveBeenCalled();
         });
 
-        it('密碼缺乏英文或數字時顯示對應的錯誤提示 (密碼必須包含dfdsfdf英文字母和數字)', async () => {
+        it('密碼缺乏英文或數字時顯示對應的錯誤提示 (密碼必須包含英文字母。和數字)', async () => {
             renderComponent();
             const emailInput = screen.getByLabelText('電子郵件');
             const passwordInput = screen.getByLabelText('密碼');
